@@ -34,11 +34,11 @@ export default function Login() {
         </div>
         <form className="mt-8 space-y-6" onSubmit={Login}>
           <div className="rounded-md shadow-sm -space-y-px">
-            <div className="pb-2">
+            <div className="mb-2">
               <input type="email" required className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" value={email} onChange={(e)=>inputEmail(e.target.value)}/>
             </div>
             <div>
-              <div className="pb-2">
+              <div className="mb-2">
                 <input type="password" required className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" value={password} onChange={(e)=> inputPassword(e.target.value)}/>
               </div>
             </div>
