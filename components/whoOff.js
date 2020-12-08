@@ -1,4 +1,19 @@
+import { useEffect, useState } from "react"
+import dayjs from 'dayjs'
+import offDay from '../lib/api/offday'
+
 export default function whoOff() {
+  const [persons, updatePerson] = useState([])
+
+  useEffect(async () => {
+    try {
+      const response = await offDay.whoOff('2019-12-18')
+      updatePerson(response.data.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }, []);
+
   return (
     <div className="flex items-center text-gray-800">
       <div className="p-4 w-full">
@@ -8,7 +23,8 @@ export default function whoOff() {
           </div>
           <div className="flex flex-col flex-grow ml-4">
             <div className="text-sm text-gray-500">Who Off</div>
-            <div className="font-bold text-lg">Harry Leonardo</div>
+            { persons && persons.map(person => <div className="font-bold text-lg" key={person.id}>{person.employee.profile.full_name}</div>)}
+            {!persons.length && <div className="font-bold text-lg">-</div>}
           </div>
         </div>
       </div>

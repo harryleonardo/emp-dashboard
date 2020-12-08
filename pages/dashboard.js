@@ -3,11 +3,21 @@ import FullCalendar from '../components/fullCalendar'
 import OffDaysLeft from '../components/offDaysLeft'
 import WhoOff from '../components/whoOff'
 import ModalRequestOff from '../components/modalRequestOff'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
-export default function Dashboard() {
+function Dashboard() {
 	const [isModalRequestOff, setModalRequest] = useState(false)
+	const router = useRouter()
 
+	useEffect(() => checkLocalStorage(), []);
+	
+	function checkLocalStorage() {
+		if (!localStorage.getItem('user')) {
+			router.push('/login')
+		}
+	}
+	
 	return (
 		<LayoutDashboard>
 			<div className="container mx-auto p-2 md:p-4">
@@ -30,3 +40,5 @@ export default function Dashboard() {
 		</LayoutDashboard>
 	)
 }
+
+export default Dashboard

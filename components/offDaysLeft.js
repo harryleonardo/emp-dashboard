@@ -1,5 +1,19 @@
+import { useState, useEffect } from "react"
+import offDay from '../lib/api/offday'
 
 export default function offDaysLeft() {
+  const [offLeft, updateOffLeft] = useState(0)
+
+
+  useEffect(async () => {
+    try {
+      const response = await offDay.offLeft(JSON.parse(localStorage.getItem('user')).employee_id)
+      updateOffLeft(response.data.data.quota_left)
+    } catch (error) {
+      console.error(error)
+    }
+  }, []);
+
   return (
     <div className="flex items-center text-gray-800">
       <div className="py-2 px-4 w-full">
@@ -10,7 +24,7 @@ export default function offDaysLeft() {
             </div>
             <div className="flex flex-col flex-grow ml-4">
               <div className="text-sm text-gray-500">Sisa Cuti</div>
-              <div className="font-bold text-lg">12</div>
+              <div className="font-bold text-lg">{offLeft}</div>
             </div>
           </div>
         </div>
