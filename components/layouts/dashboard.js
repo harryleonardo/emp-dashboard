@@ -1,15 +1,23 @@
 import Link from 'next/link'
 import { Transition } from '@headlessui/react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 export default function LayoutDashboard({children}) {
 	const [isOpen, setIsOpen] = useState(false)
-	const [menus] = useState([
-		{ target: '/dashboard', text: 'Dashboard' },
-		{ target: '/employee', text: 'Employee' },
-		{ target: '/profile', text: 'Profile' },
-		{ target: '/company', text: 'Company' }
+	const [menus, updateMenu] = useState([
+		{ target: '/dashboard', text: 'Dashboard'},
+		{ target: '/employee', text: 'Employee'},
+		{ target: '/profile', text: 'Profile'},
 	])
+
+	useEffect(() => {
+		const role = JSON.parse(localStorage.getItem('user')).role 
+		if (role === 'ADMIN' || role === 'HR' || role === 'MANAGER') {
+			const newArr = [...menus, { target: '/company', text: 'Company', visible: false } ]; // copying the old datas array
+			updateMenu(newArr)
+		} 
+	}, []);
+
 
   return (
 		<div>
