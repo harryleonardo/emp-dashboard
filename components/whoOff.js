@@ -7,7 +7,7 @@ export default function whoOff() {
 
   useEffect(async () => {
     try {
-      const response = await offDay.whoOff('2019-12-18')
+      const response = await offDay.whoOff(dayjs().format('YYYY-MM-DD'))
       updatePerson(response.data.data)
     } catch (error) {
       console.error(error)
