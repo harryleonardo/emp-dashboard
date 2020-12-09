@@ -5,21 +5,12 @@ import {useState} from 'react'
 import offDay from '../lib/api/offday'
 
 export default function modalRequestOff({isOpen, setClose}) {
-  const [typeOff, updateTypeOFf] = useState('Cuti Tahunan')
-  const [startOff, updateStartOff] = useState('')
-  const [endOff, updateEndOff] = useState('')
-  const [notes, updateNotes] = useState('')
+
 
   async function handleSubmit(e) {
     e.preventDefault()
     try {
-      const date1 = dayjs(startOff)
-      const date2 = dayjs(endOff)       
-      const response = await offDay.submit(JSON.parse(localStorage.getItem('user')).employee_id, typeOff,date1.format('YYYY-MM-DDTHH:mm:ss[Z]'),date2.format('YYYY-MM-DDTHH:mm:ss[Z]'),date2.diff(date1, 'day', false),notes)
-      console.log(response)
-      if (response.data.status === 200) {
-        Router.reload(window.location.pathname);
-      }
+      
     } catch (error) {
       
     }

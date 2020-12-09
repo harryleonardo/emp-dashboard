@@ -65,7 +65,6 @@ export default function FullCalendar() {
   const nextMonthDays = createDaysForNextMonth(currentMonthYear.format('YYYY'), currentMonthYear.format('M'))
  
   const days = [...previousMonthDays, ...currentMonthDays, ...nextMonthDays]
-  console.log(days)
 
   return (
     <div className="antialiased sans-serif">
