@@ -15,7 +15,7 @@ export default function modalRequestOff({isOpen, setClose}) {
     try {
       const date1 = dayjs(startOff)
       const date2 = dayjs(endOff)       
-      const response = await offDay.submit(JSON.parse(localStorage.getItem('user')).employee_id, typeOff,date1.format('YYYY-MM-DDTHH:mm:ss[Z]'),date2.format('YYYY-MM-DDTHH:mm:ss[Z]'),date2.diff(date1, 'day', false),notes)
+      const response = await offDay.submit(JSON.parse(localStorage.getItem('user')).employee_id, typeOff,date1.format('YYYY-MM-DDTHH:mm:ss[Z]'),date2.format('YYYY-MM-DDTHH:mm:ss[Z]'),date2.diff(date1, 'day', false) + 1,notes)
       if (response) {
         Router.reload(window.location.pathname);
       }
