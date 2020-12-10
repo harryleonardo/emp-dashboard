@@ -16,6 +16,14 @@ export default function FullCalendar() {
   const [employees, updateEmployees] = useState([])
 
   useEffect(async() => {
+    await updateCalendar()
+  }, [currentMonthYear])
+
+  function getNumberOfDaysInMonth(year, month) {
+    return dayjs(`${year}-${month}-01`).daysInMonth()
+  }
+
+  async function updateCalendar() {
     try {
       const currentMonthDays = createDaysForCurrentMonth(currentMonthYear.format('YYYY'), currentMonthYear.format('M'))
       const previousMonthDays = createDaysForPreviousMonth(currentMonthYear.format('YYYY'), currentMonthYear.format('M'), currentMonthDays[0].date)
@@ -29,14 +37,9 @@ export default function FullCalendar() {
         } 
       }
       updateDays(daysNew)
-      console.log(daysNew)
     } catch (error) {
       
     }
-  }, [])
-
-  function getNumberOfDaysInMonth(year, month) {
-    return dayjs(`${year}-${month}-01`).daysInMonth()
   }
 
   function createDaysForCurrentMonth(year, month) {
