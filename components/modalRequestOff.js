@@ -42,6 +42,10 @@ export default function modalRequestOff({isOpen, setClose}) {
                   <div className="inline-block relative w-full">
                     <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" onChange={(e) =>updateTypeOFf(e.target.value)} value={typeOff}>
                       <option value="Cuti Tahunan">Cuti Tahunan</option>
+                      <option value="Sakit Dengan Surat Dokter">Sakit Dengan Surat Dokter</option>
+                      <option value="Sakit tanpa Surat Dokter">Sakit tanpa Surat Dokter</option>
+                      <option value="Dinas Luar Kota">Dinas Luar Kota</option>
+                      <option value="Unpaid Leave">Unpaid Leave</option>
                     </select>
                   </div>
                 </div>
