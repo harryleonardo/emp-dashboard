@@ -25,7 +25,6 @@ function Dashboard() {
   async function handleApprove(item, status) {
     try {
       const response = await offDay.actionApproval(item,JSON.parse(localStorage.getItem('user')).employee_id,status)
-      console.log(response)
       if (response) router.reload(window.location.pathname)
     } catch (error) {
       console.error(error)
