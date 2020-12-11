@@ -16,11 +16,11 @@ export default function LayoutDashboard({children}) {
 			console.log(role, 'role')
 			const newArr = [...menus]; // copying the old datas array
 			newArr.push({ target: '/company', text: 'Company'})
-			newArr.push({ target: '/logout', text: 'Logout'})
+			newArr.push({ target: '/login', text: 'Logout'})
 			updateMenu(newArr)
 		} else {
 			const newArr = [...menus]; // copying the old datas array
-			newArr.push({ target: '/logout', text: 'Logout'})
+			newArr.push({ target: '/login', text: 'Logout'})
 			updateMenu(newArr)
 		} 
 	}, []);
