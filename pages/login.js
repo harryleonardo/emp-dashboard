@@ -1,4 +1,4 @@
-import { useState} from 'react'
+import { useEffect, useState} from 'react'
 import Router from "next/router";
 import { mutate } from "swr";
 import UserAPI from '../lib/api/user'
@@ -6,6 +6,10 @@ import UserAPI from '../lib/api/user'
 export default function Login() {
   const [email, inputEmail] = useState('')
   const [password, inputPassword] = useState('')
+
+  useEffect(() => {
+    localStorage.removeItem('user')
+  },[])
 
   async function Login(e) {
     try {

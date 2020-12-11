@@ -13,7 +13,14 @@ export default function LayoutDashboard({children}) {
 	useEffect(() => {
 		const role = JSON.parse(localStorage.getItem('user')).role 
 		if (role === 'ADMIN' || role === 'HR' || role === 'MANAGER') {
-			const newArr = [...menus, { target: '/company', text: 'Company', visible: false } ]; // copying the old datas array
+			console.log(role, 'role')
+			const newArr = [...menus]; // copying the old datas array
+			newArr.push({ target: '/company', text: 'Company'})
+			newArr.push({ target: '/logout', text: 'Logout'})
+			updateMenu(newArr)
+		} else {
+			const newArr = [...menus]; // copying the old datas array
+			newArr.push({ target: '/logout', text: 'Logout'})
 			updateMenu(newArr)
 		} 
 	}, []);
